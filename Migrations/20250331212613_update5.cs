@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OrderService.Migrations
 {
     /// <inheritdoc />
-    public partial class order_initial : Migration
+    public partial class update5 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,27 +21,36 @@ namespace OrderService.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    customerId = table.Column<string>(type: "longtext", nullable: false)
+                    CustomerId = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    selectedWasherId = table.Column<string>(type: "longtext", nullable: false)
+                    SelectedWasherId = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    serviceId = table.Column<string>(type: "longtext", nullable: false)
+                    washerName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    service_name = table.Column<string>(type: "longtext", nullable: false)
+                    ServiceId = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    service_amount = table.Column<string>(type: "longtext", nullable: false)
+                    ServiceName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    review_text = table.Column<string>(type: "longtext", nullable: false)
+                    ServiceAmount = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    rating = table.Column<string>(type: "longtext", nullable: false)
+                    ReviewText = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    payment_id = table.Column<string>(type: "longtext", nullable: false)
+                    Rating = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    workStatus = table.Column<string>(type: "longtext", nullable: false)
+                    IsPayment = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    paymentStatus = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    is_washer_accepted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    PaymentId = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    WorkStatus = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsWasherAccepted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     OrderId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn)
                 },
                 constraints: table =>
                 {

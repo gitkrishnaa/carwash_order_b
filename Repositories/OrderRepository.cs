@@ -15,6 +15,27 @@ namespace OrderService.Repositories
             _context = context;
         }
 
+// get customer order list
+public async Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(string customerId)
+{
+    return await _context.Orders
+                         .Where(o => o.CustomerId == customerId)
+                         .ToListAsync();
+}
+
+public async Task<IEnumerable<Order>> GetOrdersByWasherIdAsync(string id)
+{
+    return await _context.Orders
+                         .Where(o => o.SelectedWasherId == id)
+                         .ToListAsync();
+}
+
+  // Get order by OrderId
+    public async Task<Order?> GetOrderByOrderIdAsync(string orderId)
+    {
+        return await _context.Orders.FirstOrDefaultAsync(o => o.OrderId == orderId);
+    }
+
         public async Task<IEnumerable<Order>> GetAllOrdersAsync()
         {
             return await _context.Orders.ToListAsync();
@@ -46,5 +67,7 @@ namespace OrderService.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        
     }
 }

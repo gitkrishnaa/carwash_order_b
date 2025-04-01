@@ -11,5 +11,12 @@ namespace OrderService.Repositories
         Task AddOrderAsync(Order order);
         Task UpdateOrderAsync(Order order);
         Task DeleteOrderAsync(int id);
+        Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(string customerId);
+        Task<IEnumerable<Order>> GetOrdersByWasherIdAsync(string customerId);
+        Task<Order?> GetOrderByOrderIdAsync(string orderId);
+     
+       
+        
+
     }
 }
