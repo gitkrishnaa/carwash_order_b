@@ -21,7 +21,7 @@ namespace OrderService.Models
         public bool? IsPayment { get; set; } = false;
         public string? paymentStatus { get; set; } = "pending";
         public string? PaymentId { get; set; }
-        public string? WorkStatus { get; set; } = "pending"; // completed - when work is accepted, ongoing - when work is in progress
+        public string? WorkStatus { get; set; } = "pending"; // completed - when work is accepted, ongoing -
         public bool IsWasherAccepted { get; set; } = false;
         public string OrderId { get; set; } = Guid.NewGuid().ToString();
 
