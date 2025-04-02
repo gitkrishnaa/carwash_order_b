@@ -51,7 +51,7 @@ namespace OrderService.Controllers
       if(data.IsPayment==true){
        service.paymentStatus="completed";
        service.IsPayment=true;
-       service.PaymentId=Guid.NewGuid().ToString();
+       service.PaymentId=data.PaymentId;
       }
       else{
        service.paymentStatus="failed";
@@ -65,7 +65,7 @@ namespace OrderService.Controllers
             // return Ok("ok");
         }
 
-         [HttpPost("workstatus/{order_id}")]
+         [HttpPost("workStatus/{order_id}")]
         public async Task<IActionResult> UpdateWorkStatus(int order_id, [FromBody] Order data)
         {
             string jsonData = JsonSerializer.Serialize(data);
